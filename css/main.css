@@ -1261,9 +1261,9 @@ header .header-logo a {
   outline: 0;
   border: none;
   width: 257px;
-  height: 227px;
+  height: 177px;
   background: url("../images/logo.png") no-repeat center;
-  background-size: 257px 227px;
+  background-size: 257px 177px;
   font: 0/0 a;
   text-shadow: none;
   color: transparent;
@@ -1533,7 +1533,7 @@ header .header-logo a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4); /* 0.4 조절하면 밝기 조절 됨 */
+  background-color: rgba(0, 0, 0, 0.0); /* 0.4 조절하면 밝기 조절 됨 */
   z-index: 0;
 }
 .home-content-table {
@@ -2499,7 +2499,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 #clients .owl-carousel .owl-dots .owl-dot {
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 #clients .owl-carousel .owl-dots .owl-dot span {
   width: 9px;
@@ -2523,8 +2523,7 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
  * ------------------------------------------------------------------- */
 #contact {
   background-color: #111111;
-  background-image: url(../images/contact-bg.jpg);
-  background-repeat: no-repeat;
+
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
