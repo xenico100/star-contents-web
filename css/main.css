@@ -67,7 +67,7 @@ body {
   font-family: "librebaskerville-regular", serif;
   font-size: 1.6rem;
   line-height: 3rem;
-  color: #353535;
+  color: #ffffff;
   margin: 0;
   padding: 0;
 }
@@ -158,8 +158,8 @@ p img {
 p.lead {
   font-family: "montserrat-regular", sans-serif;
   font-size: 1.6rem;
-  line-height: 1.8;
-  color: #4f4f4f;
+  line-height: 1.4;
+  color: #ffffff;
   margin-bottom: 3.6rem;
 }
 @media only screen and (max-width: 768px) {
@@ -167,6 +167,61 @@ p.lead {
     font-size: 1.8rem;
   }
 }
+
+
+
+
+p.bead {
+  font-family: "montserrat-regular", sans-serif;
+  font-size: 1.0rem;
+  line-height: 1.4;
+  color: #b7b7b7;
+  margin-bottom: 3.6rem;
+}
+@media only screen and (max-width: 768px) {
+  p.bead {
+    font-size: 1.5rem;
+  }
+}
+
+
+#home .home-content-tablecell {
+    vertical-align: bottom !important;
+    
+    /* 바닥에서 얼마나 띄울지 여기서 결정 (숫자 조절해!) */
+    padding-bottom: 0px !important; 
+}
+
+/* 2. 기존에 잡혀있던 불필요한 위아래 여백 제거 */
+#home .home-content-tablecell .row {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* --- Home 섹션 메인 글씨(이미지) 크기 조절 --- */
+#home .col-twelve > img {
+    /* 1. 너비 조절: 100%가 원래 크기니까, 50~70% 정도로 줄여보세요 */
+    width: 23% !important; 
+    
+    /* 2. 최대 크기 제한: 화면이 아무리 커져도 500px은 넘지 마라 (선택사항) */
+    max-width: 300px !important; 
+    
+    /* 3. 비율 유지 (필수) */
+    height: auto !important; 
+    
+    /* 4. 혹시 줄어들면서 가운데 정렬 풀리면 이거 추가 */
+    /* display: inline-block !important; */
+}
+
+/* 모바일 화면에서는 좀 더 크게 보여주고 싶다면 아래 코드도 추가 */
+@media only screen and (max-width: 768px) {
+    #home .col-twelve > img {
+        width: 80% !important; /* 모바일에선 조금 더 크게 */
+        max-width: none !important;
+    }
+}
+
+
 
 em, i, strong, b {
   font-size: 1.6rem;
@@ -1246,7 +1301,7 @@ header .row {
  * ------------------------------------------------------------------- */
 header .header-logo {
   position: absolute;
-  left: 32px;
+  left: 152px;
   top: 42px;
   -moz-transition: all 1s ease-in-out;
   -o-transition: all 1s ease-in-out;
@@ -1345,6 +1400,35 @@ header .header-logo a {
   bottom: -9px;
 }
 
+
+/* --- 모바일(화면 폭 768px 이하) 로고 설정 --- */
+/* --- 모바일(768px 이하)에서만 로고 중앙 정렬 --- */
+@media only screen and (max-width: 768px) {
+  header .header-logo {
+    /* 1. 화면의 정중앙 지점으로 보냄 */
+    left: 50% !important;
+    
+    /* 2. 로고 크기의 절반만큼 다시 왼쪽으로 땡겨옴 (이게 핵심!) */
+    transform: translateX(-50%) !important;
+    
+    /* 3. 위쪽 여백 조절 (취향껏 수정해) */
+    top: 30px !important; 
+    
+    /* 혹시 모를 오른쪽 여백 간섭 제거 */
+    right: auto !important;
+  }
+header .header-logo a {
+    /* 1. 원하는 박스 크기 (이 숫자 두 개만 만지면 돼!) */
+    width: 220px !important;   /* 가로 크기 */
+    height: 160px !important;   /* 세로 크기 */
+    
+    /* 2. 이미지가 박스 안에서 찌그러지지 않고 비율 유지하게 설정 (건들지 마!) */
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
+
+}
 /* ------------------------------------------------------------------- 
  * off-canvas menu - (_layout.scss) 
  * ------------------------------------------------------------------- */
@@ -1495,11 +1579,35 @@ header .header-logo a {
   }
 }
 @media only screen and (max-width: 400px) {
-  #header-menu-trigger .header-menu-text {
+  #header-menu-trigger .header-menu-text { 
     display: none;
   }
 }
 
+/* --- 모바일(768px 이하) Home 섹션 하단 요소 조절 --- */
+@media only screen and (max-width: 768px) {
+    
+    /* 1. 메인 글씨 이미지 (main_word.png) */
+    #home .col-twelve > img {
+        width: 70% !important;   /* 화면 너비의 70%만 차지해라 (취향껏 조절) */
+        max-width: 300px !important; /* 아무리 커도 300px은 넘지 마라 */
+        margin-bottom: 20px !important; /* 밑에 글씨랑 너무 붙지 않게 띄우기 */
+    }
+
+    /* 2. 주소/이메일 텍스트 (.bead 클래스) */
+    #home .col-twelve .bead {
+        font-size: 11px !important;  /* 글씨 크기: 12~14px 추천 */
+        line-height: 1.6 !important; /* 줄 간격: 1.5 ~ 1.8 추천 (너무 좁으면 답답해) */
+        
+        /* 글씨가 화면 꽉 차서 보기 싫으면 너비를 줄여 */
+        width: 90% !important;       
+        margin-left: auto !important;
+        margin-right: auto !important;
+        
+        /* 혹시 글씨 색깔도 바꾸고 싶으면 */
+        /* color: #cccccc !important; */
+    }
+}
 
 /* ===================================================================
  *  10. home - (_layout.scss)
@@ -1533,8 +1641,16 @@ header .header-logo a {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.0); /* 0.4 조절하면 밝기 조절 됨 */
+  
   z-index: 0;
+background: linear-gradient(to bottom, 
+        rgba(0,0,0,0.9) 0%,    /* 맨 위: 진한 검정 (0.9) */
+        rgba(0,0,0,0) 25%,     /* 위쪽 25% 지점부터 투명해짐 */
+        rgba(0,0,0,0) 75%,     /* 아래쪽 75% 지점까지 계속 투명 */
+        rgba(0,0,0,0.9) 100%   /* 맨 아래: 다시 진한 검정 */
+    );
+
+
 }
 .home-content-table {
 
@@ -1951,7 +2067,11 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 }
 #services .services-list .service-item {
   margin-bottom: 3rem;
-  padding: 0 10px;
+  /* 양옆 여백을 10px -> 50px로 뻥튀기 */
+  padding: 0 50px; 
+  
+  /* 레이아웃 깨짐 방지용 안전벨트 */
+  box-sizing: border-box;
 }
 #services .services-list .service-item p {
   color: rgba(242, 242, 242, 10);
@@ -1969,6 +2089,55 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
   line-height: 1.765;
   color: #FFFFFF;
   margin-bottom: 3rem;
+}
+
+/* --- [최종_진짜_마지막] About 섹션 중앙 정렬 & 확장 --- */
+
+/* 1. 큰 틀(무대)을 중앙에 위치시키기 */
+#services .services-content {
+    max-width: 1400px !important; /* 넓이 확장 */
+    width: 90% !important;
+    
+    /* ★ 여기가 핵심: 양옆 여백을 자동으로(auto) 줘서 가운데로 밀어넣음 ★ */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important; /* 기존의 왼쪽 정렬 성질 제거 */
+}
+
+/* PC 화면 설정 (모바일은 건드리지 않음) */
+@media only screen and (min-width: 769px) {
+
+    /* 2. 내부 박스들을 'Flex'로 관리 (이게 훨씬 깔끔함) */
+    #services .services-list {
+        display: flex !important;       /* 플렉스 모드 발동 */
+        justify-content: center !important; /* 가로 중앙 정렬 */
+        align-items: center !important;     /* 세로 중앙 정렬 (글씨가 사진 높이의 중간에 딱 옴) */
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    /* 3. 왼쪽 글씨 박스 (40%) */
+    #services .services-list .service-item:nth-child(1) {
+        width: 40% !important; 
+        padding-right: 50px !important; /* 글씨랑 사진 사이 간격 */
+        padding-left: 0 !important;
+        text-align: center !important;
+        float: none !important; /* 둥둥 떠다니는 float 제거 */
+    }
+
+    /* 4. 오른쪽 사진 박스 (60%) */
+    #services .services-list .service-item:nth-child(2) {
+        width: 45% !important;
+        padding: 0 !important;
+        float: none !important;
+    }
+
+    /* 5. 이미지 꽉 차게 */
+    #services .services-list .service-item:nth-child(2) img {
+        width: 100% !important;
+        height: auto !important;
+        display: block; /* 이미지 아래 미세한 여백 제거 */
+    }
 }
 
 /* ------------------------------------------------------------------- 
@@ -2050,8 +2219,12 @@ html[data-useragent*='MSIE 10.0'] .scrolldown,
 }
 #portfolio .bricks-wrapper .brick {
   float: left;
-  width: 50%;
-  padding: 0;
+ width: 50%;
+  
+  /* 여기를 수정하세요 */
+  padding: 30px; /* 원하는 간격만큼 숫자 조절 (예: 10px, 20px) */
+  box-sizing: border-box; /* 패딩을 줘도 50% 너비가 깨지지 않게 함 */
+  
   margin: 0;
 }
 #portfolio .bricks-wrapper .brick:nth-child(2n+1) {
